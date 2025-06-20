@@ -19,7 +19,7 @@ public class EmployeesController {
 
     @Autowired
     private UsersRepository usersRepository;
-
+    
     @GetMapping("/employees")
     public String showEmployeesPage(Model model) {
         List<Employees> employeesList = employeesRepository.findAll();
@@ -54,14 +54,19 @@ public class EmployeesController {
     }
 
     
-    @GetMapping("/editEmployee/{employeeId}")
-    public String editEmployee(@PathVariable Integer employeeId, Model model) {
-        Employees employee = employeesRepository.findById(employeeId).orElse(null);
-        model.addAttribute("updateEmployee", employee);
-        model.addAttribute("employees", employeesRepository.findAll());
-        return "employees";
-    }
+//    @GetMapping("/editEmployee/{employeeId}")
+//    public String editEmployee(@PathVariable Integer employeeId, Model model) {
+//        Employees employee = employeesRepository.findById(employeeId).orElse(null);
+//        model.addAttribute("updateEmployee", employee);
+//        model.addAttribute("employees", employeesRepository.findAll());
+//        return "employees";
+//    }
 
+    @PostMapping("/updateEmployee")
+    public String updateEmployee(@ModelAttribute("updateEmployee") Employees employee) {
+        employeesRepository.save(employee); // This will update if ID exists
+        return "redirect:/employees";
+    }
     
     @GetMapping("/deleteEmployee/{employeeId}")
     public String deleteEmployee(@PathVariable Integer employeeId, Model model) {

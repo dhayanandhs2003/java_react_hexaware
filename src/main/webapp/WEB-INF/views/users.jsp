@@ -22,6 +22,10 @@
                 <li class="nav-item"><a class="nav-link" href="payroll">Payroll Dashboard</a></li>
             </ul>
         </div>
+        <div class="d-flex">
+                <a href="signup" class="btn btn-outline-light me-2">Sign Up</a>
+                <a href="login" class="btn btn-outline-success">Sign In</a>
+            </div>
   </div>
 </nav>
 

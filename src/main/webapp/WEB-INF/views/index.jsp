@@ -19,6 +19,20 @@
                 <li class="nav-item"><a class="nav-link" href="payroll">Payroll Dashboard</a></li>
             </ul>
         </div>
+        <div class="d-flex">
+    <c:choose>
+        <c:when test="${not empty sessionScope.username}">
+            <span class="navbar-text text-white me-3">
+                👋 Welcome, ${sessionScope.username}
+            </span>
+            <a href="logout" class="btn btn-outline-warning">Logout</a>
+        </c:when>
+        <c:otherwise>
+            <a href="signup" class="btn btn-outline-light me-2">Sign Up</a>
+            <a href="login" class="btn btn-outline-success">Sign In</a>
+        </c:otherwise>
+    </c:choose>
+</div>
     </div>
 </nav>
 

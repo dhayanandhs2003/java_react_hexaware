@@ -13,17 +13,21 @@
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.jsp">EasyPay</a>
+    <a class="navbar-brand" href="index">EasyPay</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="users">Manage Users</a></li>
-        <li class="nav-item"><a class="nav-link active" href="employees">Manage Employees</a></li>
+        <li class="nav-item"><a class="nav-link" href="employees">Manage Employees</a></li>
         <li class="nav-item"><a class="nav-link" href="payroll">Payroll Dashboard</a></li>
       </ul>
     </div>
+    <div class="d-flex">
+                <a href="signup" class="btn btn-outline-light me-2">Sign Up</a>
+                <a href="login" class="btn btn-outline-success">Sign In</a>
+            </div>
   </div>
 </nav>
 
@@ -31,7 +35,7 @@
   <div class="row">
     <div class="col-sm-5">
       <h3>${updateEmployee != null ? "Update Employee" : "Add Employee"}</h3>
-      <form action="saveEmployee" method="post">
+      <form action="updateEmployee" method="post">
         
         <!-- Hidden field to support update -->
         <c:if test="${updateEmployee != null}">

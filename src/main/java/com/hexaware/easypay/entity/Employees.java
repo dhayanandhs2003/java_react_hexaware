@@ -51,27 +51,31 @@ public class Employees {
 
     @Column(name = "phone")
     private String phone;
+    
+    @Column(name = "password")
+    private String password;
 
     
     public Employees(Integer employeeId, Integer userId, String name, String email, LocalDate dob, String designation,
-			LocalDate doj, BigDecimal salary, String status, String department, String firstName, LocalDate hireDate,
-			String lastName, String phone) {
-		super();
-		this.employeeId = employeeId;
-		this.userId = userId;
-		this.name = name;
-		this.email = email;
-		this.dob = dob;
-		this.designation = designation;
-		this.doj = doj;
-		this.salary = salary;
-		this.status = status;
-		this.department = department;
-		this.firstName = firstName;
-		this.hireDate = hireDate;
-		this.lastName = lastName;
-		this.phone = phone;
-	}
+            LocalDate doj, BigDecimal salary, String status, String department, String firstName, LocalDate hireDate,
+            String lastName, String phone, String password) {
+    	this.employeeId = employeeId;
+    	this.userId = userId;
+    	this.name = name;
+    	this.email = email;
+    	this.dob = dob;
+    	this.designation = designation;
+    	this.doj = doj;
+    	this.salary = salary;
+    	this.status = status;
+    	this.department = department;
+    	this.firstName = firstName;
+    	this.hireDate = hireDate;
+    	this.lastName = lastName;
+    	this.phone = phone;
+    	this.password = password;
+    }
+
 
 
 	public Integer getEmployeeId() {
@@ -213,6 +217,13 @@ public class Employees {
 		this.phone = phone;
 	}
 
+	public String getPassword() {
+	    return password;
+	}
+
+	public void setPassword(String password) {
+	    this.password = password;
+	}
 
 	@Override
 	public String toString() {
