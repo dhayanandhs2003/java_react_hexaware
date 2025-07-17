@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import useDashboardStats from '../hooks/useDashboardStats';
+import '../styles/SuperAdminDashboard.css'; // Reuse same styles
 
 function AdminDashboard() {
   const token = localStorage.getItem('token');
@@ -23,112 +24,91 @@ function AdminDashboard() {
   }
 
   return (
-    <div className="container">
-      <h2 className="mb-4">Welcome, Admin HR!</h2>
-      <div className="card text-white bg-transparent border-light shadow" style={{ backdropFilter: "blur(10px)" }}>
+    <div className="dashboard-wrapper">
+      <div className="admin-dashboard-overlay" />
 
-        <div className="col-md-3">
-          <div className="card text-white border-light bg-transparent">
-            <div className="card-body text-center">
-              <h5 className="card-title">Users</h5>
-              <p className="card-text display-6">{stats.users}</p>
-            </div>
+      <h2 className="dashboard-title">Welcome back, Admin HR!</h2>
+
+      {/* Analytics Section */}
+      <div className="dashboard-cards">
+        <div className="stat-card">
+          <div className="stat-icon bg-blue">
+            <i className="fas fa-users"></i>
+          </div>
+          <div>
+            <p className="stat-label">Users</p>
+            <h3>{stats?.users}</h3>
+            <span className="stat-positive">+12%</span>
           </div>
         </div>
-        <div className="col-md-3">
-          <div className="card text-white border-light bg-transparent">
-            <div className="card-body text-center">
-              <h5 className="card-title">Employees</h5>
-              <p className="card-text display-6">{stats.employees}</p>
-            </div>
+
+        <div className="stat-card">
+          <div className="stat-icon bg-green">
+            <i className="fas fa-user-tie"></i>
+          </div>
+          <div>
+            <p className="stat-label">Employees</p>
+            <h3>{stats?.employees}</h3>
+            <span className="stat-negative">-3%</span>
           </div>
         </div>
-        <div className="col-md-3">
-          <div className="card text-white border-light bg-transparent">
-            <div className="card-body text-center">
-              <h5 className="card-title">Policies</h5>
-              <p className="card-text display-6">{stats.policies}</p>
-            </div>
+
+        <div className="stat-card">
+          <div className="stat-icon bg-yellow">
+            <i className="fas fa-file-alt"></i>
+          </div>
+          <div>
+            <p className="stat-label">Policies</p>
+            <h3>{stats?.policies}</h3>
+            <span className="stat-positive">+7%</span>
           </div>
         </div>
-        <div className="col-md-3">
-          <div className="card text-white border-light bg-transparent">
-            <div className="card-body text-center">
-              <h5 className="card-title">Audit Logs</h5>
-              <p className="card-text display-6">{stats.logs}</p>
-            </div>
+
+        <div className="stat-card">
+          <div className="stat-icon bg-red">
+            <i className="fas fa-shield-alt"></i>
+          </div>
+          <div>
+            <p className="stat-label">Audit Logs</p>
+            <h3>{stats?.logs}</h3>
+            <span className="stat-positive">+2%</span>
           </div>
         </div>
       </div>
 
-      <div className="row">
-        {/* Manage Users Card */}
-        <div className="col-md-6 col-lg-3 mb-4">
-          <div className="card h-100">
-            <div className="card-body d-flex flex-column">
-              <h5 className="card-title">Manage Users</h5>
-              <p className="card-text">
-                Create, update, or remove user accounts and assign roles.
-              </p>
-              <div className="mt-auto">
-                <Link to="/manage-users" className="btn btn-primary w-100">
-                  Go to Users
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Manage Section */}
+      <div className="manage-section">
+        <Link to="/manage-users" className="manage-card">
+          <i className="fas fa-users"></i>
+          <p>Manage Users</p>
+          <small className="manage-desc">
+            Create, update, or remove user accounts and assign roles.
+          </small>
+        </Link>
 
-        {/* Manage Employees Card */}
-        <div className="col-md-6 col-lg-3 mb-4">
-          <div className="card h-100">
-            <div className="card-body d-flex flex-column">
-              <h5 className="card-title">Manage Employees</h5>
-              <p className="card-text">
-                Add new employees, view details, and manage department info.
-              </p>
-              <div className="mt-auto">
-                <Link to="/manage-employees" className="btn btn-primary w-100">
-                  Go to Employees
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Link to="/manage-employees" className="manage-card">
+          <i className="fas fa-user-tie"></i>
+          <p>Manage Employees</p>
+          <small className="manage-desc">
+            Add new employees, view details, and manage department info.
+          </small>
+        </Link>
 
-        {/* View Policies Card */}
-        <div className="col-md-6 col-lg-3 mb-4">
-          <div className="card h-100">
-            <div className="card-body d-flex flex-column">
-              <h5 className="card-title">View Policies</h5>
-              <p className="card-text">
-                Review and edit payroll and leave policies for the organization.
-              </p>
-              <div className="mt-auto">
-                <Link to="/policies" className="btn btn-primary w-100">
-                  View Policies
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Link to="/policies" className="manage-card">
+          <i className="fas fa-file-alt"></i>
+          <p>View Policies</p>
+          <small className="manage-desc">
+            Review and edit payroll and leave policies for the organization.
+          </small>
+        </Link>
 
-        {/* Audit Logs Card */}
-        <div className="col-md-6 col-lg-3 mb-4">
-          <div className="card h-100">
-            <div className="card-body d-flex flex-column">
-              <h5 className="card-title">Audit Logs</h5>
-              <p className="card-text">
-                Track system activities and user actions for security auditing.
-              </p>
-              <div className="mt-auto">
-                <Link to="/audit-logs" className="btn btn-primary w-100">
-                  View Logs
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Link to="/audit-logs" className="manage-card">
+          <i className="fas fa-clipboard-list"></i>
+          <p>Audit Logs</p>
+          <small className="manage-desc">
+            Track system activities and user actions for security auditing.
+          </small>
+        </Link>
       </div>
     </div>
   );

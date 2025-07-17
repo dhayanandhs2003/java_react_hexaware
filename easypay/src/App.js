@@ -1,16 +1,21 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Services from './pages/Services';
+import SupportPage from './components/support/SupportPage';
+import IntegrationsPage from './components/integrations/IntegrationsPage';
+
+
 
 // Role-based dashboards
 import AdminDashboard from './pages/AdminDashboard';
 import EmployeeDashboard from './pages/EmployeeDashboard';
-import PayrollDashboard from './pages/PayrollDashboard';
-import ManagerDashboard from './pages/ManagerDashboard';
+import PayrollProcessorDashboard from './pages/PayrollProcessorDashboard';
 import SuperAdminDashboard from './pages/SuperAdminDashboard';
 
 import { ToastContainer } from 'react-toastify'; // 🆕
@@ -22,6 +27,15 @@ import ManageEmployees from './pages/ManageEmployees';
 import ManagePolicies from './pages/ManagePolicies';
 import ManageAuditLogs from './pages/ManageAuditLogs';
 
+import MyProfile from './components/profile/MyProfile';
+import SubmitLeave from './components/leaves/SubmitLeave';
+import SubmitTimesheet from './components/timesheets/SubmitTimesheet';
+import Notifications from './components/notifications/NotificationList';
+
+import ManagerDashboard from './pages/ManagerDashboard';
+import ManageLeaveRequests from './pages/ManageLeaveRequests';
+import ManageTimesheets from './pages/ManageTimesheets';
+
 function App() {
   return (
     <Router>
@@ -31,6 +45,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile/:username" element={<MyProfile />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/support" element={<SupportPage />} /> 
+        <Route path="/integrations" element={<IntegrationsPage />} />
 
         {/* Role-based dashboard routes */}
         <Route
@@ -39,14 +57,31 @@ function App() {
         />
         <Route path="/admin_hr-dashboard" element={<AdminDashboard />} />
         <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
-        <Route path="/payroll-dashboard" element={<PayrollDashboard />} />
+        <Route
+          path="/payroll_processor-dashboard"
+          element={<PayrollProcessorDashboard />}
+        />
         <Route path="/manager-dashboard" element={<ManagerDashboard />} />
 
         {/* manage users, employees */}
         <Route path="/manage-users" element={<ManageUsers />} />
         <Route path="/manage-employees" element={<ManageEmployees />} />
+        
+
         <Route path="/policies" element={<ManagePolicies />} />
         <Route path="/audit-logs" element={<ManageAuditLogs />} />
+
+        <Route path="/my-profile" element={<MyProfile />} />
+        <Route path="/submit-leave" element={<SubmitLeave />} />
+        <Route path="/submit-timesheet" element={<SubmitTimesheet />} />
+        <Route path="/notifications" element={<Notifications />} />
+
+        <Route
+          path="/manager_supervisor-dashboard"
+          element={<ManagerDashboard />}
+        />
+        <Route path="/manage-leaves" element={<ManageLeaveRequests />} />
+        <Route path="/manage-timesheets" element={<ManageTimesheets />} />
       </Routes>
       <Footer />
       <ToastContainer />

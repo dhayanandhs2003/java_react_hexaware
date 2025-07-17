@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import '../styles/Home.css';
+import CountUp from 'react-countup';
 
 function Home() {
   const token = localStorage.getItem('token');
@@ -34,13 +34,13 @@ function Home() {
                 solution. EasyPay empowers organizations to manage everything
                 with ease, accuracy, and speed.
               </p>
-              <div className="auth-links">
-                <Link to="/register" className="arrow-link">
+              <div class="auth-links">
+                <a href="/register" class="arrow-link">
                   Register
-                </Link>
-                <Link to="/login" className="arrow-link">
+                </a>
+                <a href="/login" class="arrow-link">
                   Login
-                </Link>
+                </a>
               </div>
             </>
           ) : (
@@ -191,12 +191,44 @@ function Home() {
       </div>
       {/* HOME DIV 4 */}
       <div className="home-final-cta">
-        <h2 className="cta-heading">Ready to Streamline Your payroll Operations?</h2>
+        <h2 className="cta-heading">
+          Ready to Streamline Your payroll Operations?
+        </h2>
         <p className="cta-subtext">
           Join thousands of companies who trust{' '}
           <span className="highlight">EasyPay</span> to simplify their payroll,
           manage teams effortlessly, and reclaim valuable time.
         </p>
+      </div>
+      {/* HOME DIV 4 - Metrics */}
+      <div className="home-metrics">
+        <h2 className="metrics-heading">Our Impact in Numbers</h2>
+        <div className="metrics-grid">
+          <div className="metric-box">
+            <h3>
+              <CountUp end={500} duration={10} separator="," />
+            </h3>
+            <p>Payrolls Processed</p>
+          </div>
+          <div className="metric-box">
+            <h3>
+              <CountUp end={150} duration={10} separator="," />
+            </h3>
+            <p>Employees Served</p>
+          </div>
+          <div className="metric-box">
+            <h3>
+              <CountUp end={120} duration={10} />
+            </h3>
+            <p>Companies Onboarded</p>
+          </div>
+          <div className="metric-box">
+            <h3>
+              <CountUp end={99.9} duration={10} decimals={1} />%
+            </h3>
+            <p>Accuracy Rate</p>
+          </div>
+        </div>
       </div>
     </>
   );
