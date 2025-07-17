@@ -39,5 +39,22 @@ public class UsersRequestDTO {
     public void setRole(UserRole role) {
         this.role = role;
     }
+    
+ // Required constructor
+    public UsersRequestDTO(String name, String email) {
+        this.userName = name;
+        this.email = email;
+    }
+    
+ // ✅ Default constructor for @RequestBody or manual setting
+    public UsersRequestDTO() {}
+    public UsersRequestDTO(String userName, String email, String password, UserRole role) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
+
 }
 

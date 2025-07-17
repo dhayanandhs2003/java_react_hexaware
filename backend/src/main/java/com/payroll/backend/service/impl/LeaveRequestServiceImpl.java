@@ -108,5 +108,9 @@ public class LeaveRequestServiceImpl implements LeaveRequestService {
                 .orElseThrow(() -> new RuntimeException("Leave not found with id: " + leaveId));
         leaveRequestRepository.delete(leave);
     }
+    
+    public List<LeaveRequest> getAllLeavesForEmployee(Long empId) {
+        return leaveRequestRepository.findByEmployee_EmployeeId(empId);
+    }
 }
 

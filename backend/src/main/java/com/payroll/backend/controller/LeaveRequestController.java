@@ -2,6 +2,7 @@ package com.payroll.backend.controller;
 
 import com.payroll.backend.dto.LeaveRequestDTO;
 import com.payroll.backend.dto.request.LeaveRequestRequestDTO;
+import com.payroll.backend.entity.LeaveRequest;
 import com.payroll.backend.service.LeaveRequestService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,10 @@ public class LeaveRequestController {
     public ResponseEntity<Void> deleteLeave(@PathVariable Long id) {
         leaveRequestService.deleteLeaveRequest(id);
         return ResponseEntity.noContent().build();
+    }
+    
+    @GetMapping("/employee/{empId}")
+    public ResponseEntity<List<LeaveRequest>> getByEmployeeId(@PathVariable Long empId) {
+        return ResponseEntity.ok(leaveRequestService.getAllLeavesForEmployee(empId));
     }
 }

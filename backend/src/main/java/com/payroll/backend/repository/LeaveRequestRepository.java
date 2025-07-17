@@ -9,6 +9,10 @@ import java.util.List;
 
 public interface LeaveRequestRepository extends JpaRepository<LeaveRequest, Long> {
 
+	// ✅ Add this method to fetch all leave requests by employeeId
+	List<LeaveRequest> findByEmployee_EmployeeId(Long employeeId);
+
+	
 //    // Get all leave requests by an employee
 //    List<LeaveRequest> findByEmployee(Employees employee);
 //

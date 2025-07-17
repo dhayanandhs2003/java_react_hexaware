@@ -22,6 +22,13 @@ public class UserDTO {
         this.role = role;
         this.createdAt = createdAt;
     }
+    
+ // Required constructor
+    public UserDTO(Long id, String name, String email) {
+        this.userId = id;
+        this.userName = name;
+        this.email = email;
+    }
 
     // Getters and Setters
     public Long getUserId() {

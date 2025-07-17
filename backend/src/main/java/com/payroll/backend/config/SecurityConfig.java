@@ -61,7 +61,7 @@ public class SecurityConfig {
         http
         .cors(cors -> cors.configurationSource(request -> {
             var config = new CorsConfiguration();
-            config.setAllowedOrigins(List.of("http://localhost:3001"));
+            config.setAllowedOrigins(List.of("http://localhost:3000"));
             config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
             config.setAllowedHeaders(List.of("*"));
             config.setAllowCredentials(true);
@@ -73,9 +73,13 @@ public class SecurityConfig {
 
             	    // Admin + Super Admin
             	    .requestMatchers("/api/users/**").hasAnyRole("ADMIN_HR", "SUPER_ADMIN")
+//            	    .requestMatchers(HttpMethod.GET , "/api/employees/**").hasAnyRole("ADMIN_HR", "EMPLOYEE", "SUPER_ADMIN")
+//            	    .requestMatchers(HttpMethod.PUT, "/api/employees/**").hasAnyRole("ADMIN_HR", "EMPLOYEE", "SUPER_ADMIN")
             	    .requestMatchers("/api/employees/**").hasAnyRole("ADMIN_HR", "EMPLOYEE", "SUPER_ADMIN")
             	    .requestMatchers("/api/policies/**").hasAnyRole("ADMIN_HR", "SUPER_ADMIN")
             	    .requestMatchers("/api/audit-logs/**").hasAnyRole("ADMIN_HR", "SUPER_ADMIN")
+            	    .requestMatchers("/api/notifications/**").hasAnyRole("EMPLOYEE", "SUPER_ADMIN", "ADMIN")
+
 
             	    // Payroll Processor
             	    .requestMatchers(HttpMethod.POST, "/api/payrolls").hasAnyRole("PAYROLL_PROCESSOR", "SUPER_ADMIN")
@@ -87,7 +91,8 @@ public class SecurityConfig {
             	    .requestMatchers("/api/notifications/**").hasAnyRole("EMPLOYEE", "SUPER_ADMIN")
             	    .requestMatchers("/api/leave-requests/**").hasAnyRole("EMPLOYEE", "SUPER_ADMIN")
             	    .requestMatchers("/api/timesheets/**").hasAnyRole("EMPLOYEE", "PAYROLL_PROCESSOR", "MANAGER_SUPERVISOR", "SUPER_ADMIN")
-
+            	    .requestMatchers("/api/timesheets/**").hasRole("SUPER_ADMIN")
+            	    
             	    // Manager/Supervisor
             	    .requestMatchers(HttpMethod.PUT, "/api/leave-requests/**").hasAnyRole("MANAGER_SUPERVISOR", "SUPER_ADMIN")
 
