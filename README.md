@@ -42,40 +42,75 @@
 ## 🧩 Project Structure
 
 EasyPay/
+
 ├── backend/
+
 │ ├── com.hexaware.easypay.entity/
+
 │ │ ├── User.java
+
 │ │ ├── Employee.java
+
 │ │ └── TimeSheet.java
+
 │ ├── com.hexaware.easypay.repository/
+
 │ │ ├── UserRepository.java
+
 │ │ ├── EmployeeRepository.java
+
 │ │ └── TimeSheetRepository.java
+
 │ ├── com.hexaware.easypay.controller/
+
 │ │ ├── AuthController.java
+
 │ │ ├── EmployeeController.java
+
 │ │ └── TimeSheetController.java
+
 │ ├── com.hexaware.easypay.config/
+
 │ │ └── SecurityConfig.java
+
 │ └── Application.java
+
 ├── frontend/
+
 │ ├── src/
+
 │ │ ├── pages/
+
 │ │ │ ├── LoginPage.jsx
+
 │ │ │ ├── RegisterPage.jsx
+
 │ │ │ ├── Dashboard.jsx
+
 │ │ │ ├── ManageEmployees.jsx
+
 │ │ │ ├── ManageTimesheets.jsx
+
 │ │ │ └── ViewPayroll.jsx
+
 │ │ ├── services/
+
 │ │ │ ├── authService.js
+
 │ │ │ ├── employeeService.js
+
 │ │ │ ├── timeSheetService.js
+
 │ │ │ └── payrollService.js
+
 │ │ └── components/
+
 │ │ ├── Navbar.jsx
+
 │ │ └── ProtectedRoute.jsx
+
 │ └── App.jsx
+
 
 yaml
 Copy
